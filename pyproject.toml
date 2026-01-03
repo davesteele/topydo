@@ -1,9 +1,70 @@
+# Copyright (c) 2025 David Steele <dsteele@gmail.com>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+# License-Filename: LICENSE
+#
+
 [build-system]
-requires = ["setuptools", "wheel", "pytest-runner"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project]
+name = "topydo"
+version = "0.16"
+description = "advanced todo.txt terminal utility for managing tasks"
+readme = "README.md"
+requires-python = ">=3.3"
+authors = [ { name = "Bram Schoenmakers", email = "bram@topydo.org" } ]
+keywords = [ "todo", "task", "task-list", "todotxt", "todo.txt", "task-manager" ]
+classifiers = [
+    "Environment :: Console",
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+    "Topic :: Utilities",
+]
+dependencies = [
+    'arrow >= 0.7.0',
+]
+
+[project.optional-depencies]
+test = [
+    "pytest",
+    "pytest-mock",
+    "freezegun",
+]
+
+[project.urls]
+Homepage = "https://topydo.org"
+Source = "https://github.com/topydo/topydo.git"
+Issues = "https://github.com/topydo/topydo/issues"
+Changelog = "https://github.com/topydo/topydo/blob/master/CHANGES.md"
+
+[project.scripts]
+topydo = "topydo.ui.UILoader:main"
+
+[tool.poetry]
+package-mode = true
+packages = [
+    {include = "topydo"},
+]
 
 [tool.black]
 line-length = 79
 
 [tool.isort]
 profile = "black"
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"
+testpaths = [ "topydo", "test" ]
+pythonpath = [
+    ".",
+]
