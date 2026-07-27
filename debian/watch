@@ -1,8 +1,8 @@
-version=4
+Version: 5
 
-opts=\
-filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/topydo-$1\.tar\.gz/,\
-repacksuffix=+dfsg1,\
-repack,compression=gz,\
-dversionmangle=s/\+dfsg1// \
-https://github.com/davesteele/topydo/tags .*archive/refs/tags/(\d\S*)\.tar\.gz
+Template: Github
+Compression: gz
+Dist: https://github.com/davesteele/topydo
+Dversionmangle: s/\+dfsg1//
+Repack: yes
+Repacksuffix: +dfsg1
