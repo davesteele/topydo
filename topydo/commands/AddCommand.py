@@ -16,7 +16,6 @@
 
 """ Provides the AddCommand class that implements the 'add' subcommand. """
 
-import codecs
 import re
 from datetime import date
 from os.path import expanduser
@@ -50,7 +49,7 @@ class AddCommand(WriteCommand):
         if self.from_file == '-':
             f = stdin
         else:
-            f = codecs.open(self.from_file, 'r', encoding='utf-8')
+            f = open(self.from_file, 'r', encoding='utf-8')
 
         todos = f.read().splitlines()
 

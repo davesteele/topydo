@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import codecs
 import os
 import re
 import sys
@@ -521,7 +520,7 @@ class ListCommandJsonTest(CommandTest):
         self.assertFalse(todolist.dirty)
 
         jsontext = ""
-        with codecs.open('test/data/ListCommandTest.json', 'r',
+        with open('test/data/ListCommandTest.json', 'r',
                          encoding='utf-8') as json:
             jsontext = json.read()
 
@@ -537,7 +536,7 @@ class ListCommandJsonTest(CommandTest):
         self.assertFalse(todolist.dirty)
 
         jsontext = ""
-        with codecs.open('test/data/ListCommandUnicodeTest.json', 'r',
+        with open('test/data/ListCommandUnicodeTest.json', 'r',
                          encoding='utf-8') as json:
             jsontext = json.read()
 
@@ -572,8 +571,12 @@ class ListCommandIcalTest(CommandTest):
         self.assertTrue(todolist.dirty)
 
         icaltext = ""
-        with codecs.open('test/data/ListCommandTest.ics', 'r',
-                         encoding='utf-8') as ical:
+        with open(
+                'test/data/ListCommandTest.ics',
+                'r',
+                encoding='utf-8',
+                newline="",
+            ) as ical:
             icaltext = ical.read()
 
         self.assertEqual(replace_ical_tags(self.output),
@@ -594,8 +597,12 @@ class ListCommandIcalTest(CommandTest):
         self.assertTrue(todolist.dirty)
 
         icaltext = ""
-        with codecs.open('test/data/ListCommandUnicodeTest.ics', 'r',
-                         encoding='utf-8') as ical:
+        with open(
+                'test/data/ListCommandUnicodeTest.ics',
+                'r',
+                encoding='utf-8',
+                newline=""
+            ) as ical:
             icaltext = ical.read()
 
         self.assertEqual(replace_ical_tags(self.output),
@@ -621,7 +628,7 @@ class ListCommandDotTest(CommandTest):
         self.assertFalse(todolist.dirty)
 
         dottext = ""
-        with codecs.open('test/data/ListCommandTest.dot', 'r',
+        with open('test/data/ListCommandTest.dot', 'r',
                          encoding='utf-8') as dot:
             dottext = dot.read()
 

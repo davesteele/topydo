@@ -14,7 +14,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import codecs
 import os
 import shlex
 import tempfile
@@ -74,7 +73,7 @@ class EditCommand(MultiCommand):
 
     @staticmethod
     def _todos_from_temp(p_temp_file):
-        with codecs.open(p_temp_file.name, encoding='utf-8') as temp:
+        with open(p_temp_file.name, encoding='utf-8') as temp:
             todos = temp.read().splitlines()
 
         todo_objs = []
