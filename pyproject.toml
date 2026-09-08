@@ -13,7 +13,7 @@ name = "topydo"
 version = "0.16"
 description = "advanced todo.txt terminal utility for managing tasks"
 readme = "README.md"
-requires-python = ">=3.3"
+requires-python = ">=3.9"
 authors = [ { name = "Bram Schoenmakers", email = "bram@topydo.org" } ]
 keywords = [ "todo", "task", "task-list", "todotxt", "todo.txt", "task-manager" ]
 classifiers = [
@@ -67,4 +67,9 @@ addopts = "--import-mode=importlib"
 testpaths = [ "topydo", "test" ]
 pythonpath = [
     ".",
+]
+
+[dependency-groups]
+test = [
+    "freezegun (>=1.5.5,<2.0.0)"
 ]
